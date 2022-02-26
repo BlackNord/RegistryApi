@@ -9,18 +9,26 @@ namespace Registry.Api.Services
 	public class AppointmentService : IAppointmentService
 	{
 		private readonly IRepository<AppointmentEntity> repository;
+		private readonly IRepository<DoctorEntity> doctorRepository;
+		private readonly IRepository<PatientEntity> patientRepository;
 
-		public AppointmentService(IRepository<AppointmentEntity> repository)
+		public AppointmentService(IRepository<AppointmentEntity> repository,
+			IRepository<DoctorEntity> doctorRepository,
+			IRepository<PatientEntity> patientRepository)
 		{
 			this.repository = repository;
+			this.doctorRepository = doctorRepository;
+			this.patientRepository = patientRepository;
 		}
 
 		public async Task<int> CreateAppointment(AppointmentCreateRequest request)
 		{
+			if (!(await doctorRepository.Exists(x => x.Id == request.DoctorId)))
+				throw new Exception("Object is null");
+
 			var entity = new AppointmentEntity()
 			{
 				DoctorId = request.DoctorId,
-				PatientId = request.PatientId,
 				AppointmentDate = request.AppointmentDate,
 				IsAssigned = request.IsRecorded
 			};
@@ -39,6 +47,9 @@ namespace Registry.Api.Services
 			if (appointment == null)
 				throw new Exception("Object is null");
 
+			if (!(await patientRepository.Exists(x => x.Id == request.PatientId)))
+				throw new Exception("Object is null");
+
 			appointment.PatientId = request.PatientId;
 			appointment.AppointmentDate = request.AppointmentDate;
 			appointment.IsAssigned = request.IsRecorded;
@@ -46,11 +57,14 @@ namespace Registry.Api.Services
 			await repository.Update(appointment);
 		}
 
-		public async Task AsignAppointment(AppointmentAssignRequest request)
+		public async Task AssignAppointment(AppointmentAssignRequest request)
 		{
 			var appointment = await repository.GetById(request.Id);
 
 			if (appointment == null)
+				throw new Exception("Object is null");
+
+			if (!(await patientRepository.Exists(x => x.Id == request.PatientId)))
 				throw new Exception("Object is null");
 
 			appointment.PatientId = request.PatientId;
