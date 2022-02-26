@@ -11,5 +11,7 @@
 		public DateTimeOffset BirthDate { get; set; }
 
 		public string? ContactNumber { get; set; }
+
+		public virtual IEnumerable<AppointmentEntity>? Appointments { get; set; }
 	}
 }
