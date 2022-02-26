@@ -46,7 +46,7 @@ namespace Registry.Api.Services
 			await repository.Update(appointment);
 		}
 
-		public async Task AsignAppointment(AppointmentRecordRequest request)
+		public async Task AsignAppointment(AppointmentAsignRequest request)
 		{
 			var appointment = await repository.GetById(request.Id);
 

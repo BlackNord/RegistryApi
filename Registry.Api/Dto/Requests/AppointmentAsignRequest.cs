@@ -1,6 +1,6 @@
 ﻿namespace Registry.Api.Dto.Requests
 {
-	public class AppointmentRecordRequest
+	public class AppointmentAsignRequest
 	{
 		public int Id { get; set; }
 

@@ -9,7 +9,7 @@ namespace Registry.Api.Services.Interfaces
 
 		Task UpdateAppointment(AppointmentUpdateRequest request);
 
-		Task AsignAppointment(AppointmentRecordRequest request);
+		Task AsignAppointment(AppointmentAsignRequest request);
 
 		Task<AppointmentResponse> GetAppointment(int id);
 
