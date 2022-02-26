@@ -10,7 +10,7 @@
 
 		public DateTimeOffset AppointmentDate { get; set; }
 
-		public bool IsRecorded { get; set; }
+		public bool IsAssigned { get; set; }
 
 		public int? PatientId { get; set; }
 

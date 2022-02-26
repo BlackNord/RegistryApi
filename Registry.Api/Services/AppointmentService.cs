@@ -22,7 +22,7 @@ namespace Registry.Api.Services
 				DoctorId = request.DoctorId,
 				PatientId = request.PatientId,
 				AppointmentDate = request.AppointmentDate,
-				IsRecorded = request.IsRecorded
+				IsAssigned = request.IsRecorded
 			};
 
 			await repository.Add(entity);
@@ -41,12 +41,12 @@ namespace Registry.Api.Services
 
 			appointment.PatientId = request.PatientId;
 			appointment.AppointmentDate = request.AppointmentDate;
-			appointment.IsRecorded = request.IsRecorded;
+			appointment.IsAssigned = request.IsRecorded;
 
 			await repository.Update(appointment);
 		}
 
-		public async Task AsignAppointment(AppointmentAsignRequest request)
+		public async Task AsignAppointment(AppointmentAssignRequest request)
 		{
 			var appointment = await repository.GetById(request.Id);
 
@@ -54,7 +54,7 @@ namespace Registry.Api.Services
 				throw new Exception("Object is null");
 
 			appointment.PatientId = request.PatientId;
-			appointment.IsRecorded = request.IsRecorded;
+			appointment.IsAssigned = request.IsRecorded;
 
 			await repository.Update(appointment);
 		}
@@ -97,7 +97,7 @@ namespace Registry.Api.Services
 				DoctorId = source.DoctorId,
 				PatientId = source.PatientId,
 				AppointmentDate = source.AppointmentDate,
-				IsRecorded = source.IsRecorded
+				IsRecorded = source.IsAssigned
 			};
 
 			return result;
