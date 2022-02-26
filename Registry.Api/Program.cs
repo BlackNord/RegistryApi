@@ -1,23 +1,36 @@
+using Registry.Api.Persistence;
+using Registry.Api.Repositories;
+using Registry.Api.Services;
+using Registry.Api.Services.Interfaces;
+using Microsoft.AspNetCore.HttpLogging;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
+var configuration = builder.Configuration;
 
-// Add services to the container.
-
-builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddOptions();
+builder.Services.AddHttpLogging(options =>
+{
+	options.LoggingFields = HttpLoggingFields.Request;
+});
+
+builder.Services.Configure<DatabaseSettings>(configuration.GetSection(nameof(DatabaseSettings)));
+
+builder.Services.AddScoped<DbContext, ApplicationDatabaseContext>();
+builder.Services.AddScoped(typeof(IRepository<>), typeof(EntityFrameworkRepository<>));
+
+builder.Services.AddScoped<IDoctorService, DoctorService>();
+builder.Services.AddScoped<IPatientService, PatientService>();
+builder.Services.AddScoped<IAppointmentService, AppointmentService>();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-	app.UseSwagger();
-	app.UseSwaggerUI();
-}
-
+app.UseHttpLogging();
+app.UseSwagger();
+app.UseSwaggerUI();
 app.UseHttpsRedirection();
-
 app.UseAuthorization();
 
 app.MapControllers();
