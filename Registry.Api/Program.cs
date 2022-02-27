@@ -28,9 +28,9 @@ builder.Services.AddScoped<IAppointmentService, AppointmentService>();
 
 var app = builder.Build();
 
-app.UseHttpLogging();
 app.UseSwagger();
 app.UseSwaggerUI();
+app.UseHttpLogging();
 app.UseHttpsRedirection();
 app.UseAuthorization();
 
