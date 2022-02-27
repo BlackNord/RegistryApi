@@ -45,10 +45,10 @@ namespace Registry.Api.Services
 			var appointment = await repository.GetById(request.Id);
 
 			if (appointment == null)
-				throw new Exception("Object is null");
+				throw new Exception("Object Appointment is null");
 
 			if (!(await patientRepository.Exists(x => x.Id == request.PatientId)))
-				throw new Exception("Object is null");
+				throw new Exception("Object Patient is null");
 
 			appointment.PatientId = request.PatientId;
 			appointment.AppointmentDate = request.AppointmentDate;
@@ -62,10 +62,10 @@ namespace Registry.Api.Services
 			var appointment = await repository.GetById(request.Id);
 
 			if (appointment == null)
-				throw new Exception("Object is null");
+				throw new Exception("Object Appointment is null");
 
 			if (!(await patientRepository.Exists(x => x.Id == request.PatientId)))
-				throw new Exception("Object is null");
+				throw new Exception("Object Patient is null");
 
 			appointment.PatientId = request.PatientId;
 			appointment.IsAssigned = request.IsRecorded;
@@ -78,7 +78,7 @@ namespace Registry.Api.Services
 			var appointment = await repository.GetById(id);
 
 			if (appointment == null)
-				throw new Exception("Object is null");
+				throw new Exception("Object Appointment is null");
 
 			var result = GetAppointmentResponse(appointment);
 			return result;
@@ -98,7 +98,7 @@ namespace Registry.Api.Services
 			var appointment = await repository.GetById(id);
 
 			if (appointment == null)
-				throw new Exception("Object is null");
+				throw new Exception("Object Appointment is null");
 
 			await repository.Delete(appointment);
 		}

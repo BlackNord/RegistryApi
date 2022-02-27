@@ -37,7 +37,7 @@ namespace Registry.Api.Services
 			var patient = await repository.GetById(request.Id);
 
 			if (patient == null)
-				throw new Exception("Object is null");
+				throw new Exception("Object Patient is null");
 
 			patient.Name = request.Name;
 			patient.Surname = request.Surname;
@@ -52,7 +52,7 @@ namespace Registry.Api.Services
 			var patient = await repository.GetById(id);
 
 			if (patient == null)
-				throw new Exception("Object is null");
+				throw new Exception("Object Patient is null");
 
 			var result = GetPatientResponse(patient);
 			return result;
@@ -72,7 +72,7 @@ namespace Registry.Api.Services
 			var patient = await repository.GetById(id);
 
 			if (patient == null)
-				throw new Exception("Object is null");
+				throw new Exception("Object Patient is null");
 
 			await repository.Delete(patient);
 		}
