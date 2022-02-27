@@ -1,0 +1,11 @@
+[Unit] 
+Description=Registry web api
+
+[Service] 
+WorkingDirectory=/var/www/registry-api 
+ExecStart=/usr/bin/dotnet /var/www/registry-api/Registry.Api.dll
+SyslogIdentifier=offershare-web-app
+Environment=ASPNETCORE_ENVIRONMENT=Production 
+
+[Install] 
+WantedBy=multi-user.target
