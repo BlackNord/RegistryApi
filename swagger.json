@@ -1,0 +1,709 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Registry.Api",
+    "version": "1.0"
+  },
+  "host": "nord-registry.endpoints.registry-api-340512.cloud.goog",
+  "paths": {
+    "/api/appointments": {
+      "get": {
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "format": "int32",
+            "in": "query",
+            "name": "take",
+            "type": "integer"
+          },
+          {
+            "format": "int32",
+            "in": "query",
+            "name": "skip",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "items": {
+                "$ref": "#/definitions/AppointmentResponse"
+              },
+              "type": "array"
+            }
+          }
+        },
+        "tags": [
+          "Appointment"
+        ]
+      },
+      "post": {
+        "consumes": [
+          "application/json",
+          "text/json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/AppointmentCreateRequest"
+            }
+          }
+        ],
+        "responses": {
+          "101": {
+            "description": "Information",
+            "schema": {
+              "items": {
+                "$ref": "#/definitions/AppointmentResponse"
+              },
+              "type": "array"
+            }
+          }
+        },
+        "tags": [
+          "Appointment"
+        ]
+      },
+      "put": {
+        "consumes": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/AppointmentUpdateRequest"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          }
+        },
+        "tags": [
+          "Appointment"
+        ]
+      }
+    },
+    "/api/appointments/assign": {
+      "post": {
+        "consumes": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/AppointmentAssignRequest"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          }
+        },
+        "tags": [
+          "Appointment"
+        ]
+      }
+    },
+    "/api/appointments/{id}": {
+      "delete": {
+        "parameters": [
+          {
+            "format": "int32",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          }
+        },
+        "tags": [
+          "Appointment"
+        ]
+      },
+      "get": {
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "format": "int32",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "items": {
+                "$ref": "#/definitions/AppointmentResponse"
+              },
+              "type": "array"
+            }
+          }
+        },
+        "tags": [
+          "Appointment"
+        ]
+      }
+    },
+    "/api/doctors": {
+      "get": {
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "format": "int32",
+            "in": "query",
+            "name": "take",
+            "type": "integer"
+          },
+          {
+            "format": "int32",
+            "in": "query",
+            "name": "skip",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "items": {
+                "$ref": "#/definitions/DoctorResponse"
+              },
+              "type": "array"
+            }
+          }
+        },
+        "tags": [
+          "Doctor"
+        ]
+      },
+      "post": {
+        "consumes": [
+          "application/json",
+          "text/json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/DoctorCreateRequest"
+            }
+          }
+        ],
+        "responses": {
+          "101": {
+            "description": "Information",
+            "schema": {
+              "items": {
+                "$ref": "#/definitions/DoctorResponse"
+              },
+              "type": "array"
+            }
+          }
+        },
+        "tags": [
+          "Doctor"
+        ]
+      },
+      "put": {
+        "consumes": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/DoctorUpdateRequest"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          }
+        },
+        "tags": [
+          "Doctor"
+        ]
+      }
+    },
+    "/api/doctors/{id}": {
+      "delete": {
+        "parameters": [
+          {
+            "format": "int32",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          }
+        },
+        "tags": [
+          "Doctor"
+        ]
+      },
+      "get": {
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "format": "int32",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "items": {
+                "$ref": "#/definitions/DoctorResponse"
+              },
+              "type": "array"
+            }
+          }
+        },
+        "tags": [
+          "Doctor"
+        ]
+      }
+    },
+    "/api/patients": {
+      "get": {
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "format": "int32",
+            "in": "query",
+            "name": "take",
+            "type": "integer"
+          },
+          {
+            "format": "int32",
+            "in": "query",
+            "name": "skip",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "items": {
+                "$ref": "#/definitions/PatientResponse"
+              },
+              "type": "array"
+            }
+          }
+        },
+        "tags": [
+          "Patient"
+        ]
+      },
+      "post": {
+        "consumes": [
+          "application/json",
+          "text/json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/PatientCreateRequest"
+            }
+          }
+        ],
+        "responses": {
+          "101": {
+            "description": "Information",
+            "schema": {
+              "items": {
+                "$ref": "#/definitions/PatientResponse"
+              },
+              "type": "array"
+            }
+          }
+        },
+        "tags": [
+          "Patient"
+        ]
+      },
+      "put": {
+        "consumes": [
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/PatientUpdateRequest"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          }
+        },
+        "tags": [
+          "Patient"
+        ]
+      }
+    },
+    "/api/patients/{id}": {
+      "delete": {
+        "parameters": [
+          {
+            "format": "int32",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          }
+        },
+        "tags": [
+          "Patient"
+        ]
+      },
+      "get": {
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "format": "int32",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "items": {
+                "$ref": "#/definitions/PatientResponse"
+              },
+              "type": "array"
+            }
+          }
+        },
+        "tags": [
+          "Patient"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "AppointmentAssignRequest": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "isRecorded": {
+          "type": "boolean"
+        },
+        "patientId": {
+          "format": "int32",
+          "type": "integer",
+          "x-nullable": true
+        }
+      },
+      "type": "object"
+    },
+    "AppointmentCreateRequest": {
+      "additionalProperties": false,
+      "properties": {
+        "appointmentDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "doctorId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "isRecorded": {
+          "type": "boolean"
+        },
+        "patientId": {
+          "format": "int32",
+          "type": "integer",
+          "x-nullable": true
+        }
+      },
+      "type": "object"
+    },
+    "AppointmentResponse": {
+      "additionalProperties": false,
+      "properties": {
+        "appointmentDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "doctorId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "id": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "isRecorded": {
+          "type": "boolean"
+        },
+        "patientId": {
+          "format": "int32",
+          "type": "integer",
+          "x-nullable": true
+        }
+      },
+      "type": "object"
+    },
+    "AppointmentUpdateRequest": {
+      "additionalProperties": false,
+      "properties": {
+        "appointmentDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "id": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "isRecorded": {
+          "type": "boolean"
+        },
+        "patientId": {
+          "format": "int32",
+          "type": "integer",
+          "x-nullable": true
+        }
+      },
+      "type": "object"
+    },
+    "DoctorCreateRequest": {
+      "additionalProperties": false,
+      "properties": {
+        "contactNumber": {
+          "type": "string",
+          "x-nullable": true
+        },
+        "name": {
+          "type": "string",
+          "x-nullable": true
+        },
+        "speciality": {
+          "type": "string",
+          "x-nullable": true
+        },
+        "surname": {
+          "type": "string",
+          "x-nullable": true
+        }
+      },
+      "type": "object"
+    },
+    "DoctorResponse": {
+      "additionalProperties": false,
+      "properties": {
+        "contactNumber": {
+          "type": "string",
+          "x-nullable": true
+        },
+        "id": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "name": {
+          "type": "string",
+          "x-nullable": true
+        },
+        "speciality": {
+          "type": "string",
+          "x-nullable": true
+        },
+        "surname": {
+          "type": "string",
+          "x-nullable": true
+        }
+      },
+      "type": "object"
+    },
+    "DoctorUpdateRequest": {
+      "additionalProperties": false,
+      "properties": {
+        "contactNumber": {
+          "type": "string",
+          "x-nullable": true
+        },
+        "id": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "name": {
+          "type": "string",
+          "x-nullable": true
+        },
+        "speciality": {
+          "type": "string",
+          "x-nullable": true
+        },
+        "surname": {
+          "type": "string",
+          "x-nullable": true
+        }
+      },
+      "type": "object"
+    },
+    "PatientCreateRequest": {
+      "additionalProperties": false,
+      "properties": {
+        "birthDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "contactNumber": {
+          "type": "string",
+          "x-nullable": true
+        },
+        "name": {
+          "type": "string",
+          "x-nullable": true
+        },
+        "surname": {
+          "type": "string",
+          "x-nullable": true
+        }
+      },
+      "type": "object"
+    },
+    "PatientResponse": {
+      "additionalProperties": false,
+      "properties": {
+        "birthDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "contactNumber": {
+          "type": "string",
+          "x-nullable": true
+        },
+        "id": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "name": {
+          "type": "string",
+          "x-nullable": true
+        },
+        "surname": {
+          "type": "string",
+          "x-nullable": true
+        }
+      },
+      "type": "object"
+    },
+    "PatientUpdateRequest": {
+      "additionalProperties": false,
+      "properties": {
+        "birthDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "contactNumber": {
+          "type": "string",
+          "x-nullable": true
+        },
+        "id": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "name": {
+          "type": "string",
+          "x-nullable": true
+        },
+        "surname": {
+          "type": "string",
+          "x-nullable": true
+        }
+      },
+      "type": "object"
+    }
+  },
+  "x-components": {}
+}
