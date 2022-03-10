@@ -2,12 +2,16 @@
 
 FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS base
 WORKDIR /app
-EXPOSE 80
-EXPOSE 443
+
+EXPOSE 8080
+
+ENV ASPNETCORE_ENVIRONMENT="Production"
+ENV ASPNETCORE_URLS=http://*:8080
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
 COPY ["Registry.Api/Registry.Api.csproj", "Registry.Api/"]
+COPY ["Registry.Api.Integration/Registry.Api.Integration.csproj", "Registry.Api.Integration/"]
 RUN dotnet restore "Registry.Api/Registry.Api.csproj"
 COPY . .
 WORKDIR "/src/Registry.Api"

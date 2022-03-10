@@ -10,11 +10,16 @@
 
 	<ItemGroup>
 		<PackageReference Include="EFCore.NamingConventions" Version="6.0.0" />
+		<PackageReference Include="Google.Cloud.PubSub.V1" Version="2.7.0" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.Proxies" Version="6.0.1" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.1" />
 		<PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.14.0" />
 		<PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="6.0.3" />
 		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\Registry.Api.Integration\Registry.Api.Integration.csproj" />
 	</ItemGroup>
 
 </Project>

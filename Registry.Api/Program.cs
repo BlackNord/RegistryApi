@@ -5,14 +5,23 @@ using Registry.Api.Services.Interfaces;
 using Microsoft.AspNetCore.HttpLogging;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.HttpOverrides;
+using Registry.Api.Integration.Integration;
+using Registry.Api.Integration.Service.Interfaces;
+using Registry.Api.Integration.Service;
 
 var builder = WebApplication.CreateBuilder(args);
 var configuration = builder.Configuration;
+
+//Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", "google_auth_credentials.json");
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddOptions();
+
+builder.Services.Configure<GCSettings>(configuration.GetSection(nameof(GCSettings)));
+builder.Services.AddScoped<IBillingService, BillingService>();
+
 builder.Services.AddHttpLogging(options =>
 {
 	options.LoggingFields = HttpLoggingFields.Request;
