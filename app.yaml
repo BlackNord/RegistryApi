@@ -1,0 +1,13 @@
+service: registry-api
+runtime: custom
+env: flex
+
+manual_scaling:
+  instances: 1
+resources:
+  cpu: 1
+  memory_gb: 0.5
+  disk_size_gb: 10
+
+beta_settings:
+  cloud_sql_instances: "nord-registry:europe-central2-a:registry-dev=tcp:5432"

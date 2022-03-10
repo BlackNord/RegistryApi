@@ -1,6 +1,8 @@
 ﻿using Registry.Api.Dto.Requests;
 using Registry.Api.Dto.Responses;
 using Registry.Api.Entities;
+using Registry.Api.Integration.Dto.Requests;
+using Registry.Api.Integration.Service.Interfaces;
 using Registry.Api.Repositories;
 using Registry.Api.Services.Interfaces;
 
@@ -11,14 +13,17 @@ namespace Registry.Api.Services
 		private readonly IRepository<AppointmentEntity> repository;
 		private readonly IRepository<DoctorEntity> doctorRepository;
 		private readonly IRepository<PatientEntity> patientRepository;
+		private readonly IBillingService billingService;
 
 		public AppointmentService(IRepository<AppointmentEntity> repository,
 			IRepository<DoctorEntity> doctorRepository,
-			IRepository<PatientEntity> patientRepository)
+			IRepository<PatientEntity> patientRepository,
+			IBillingService billingService)
 		{
 			this.repository = repository;
 			this.doctorRepository = doctorRepository;
 			this.patientRepository = patientRepository;
+			this.billingService = billingService;
 		}
 
 		public async Task<int> CreateAppointment(AppointmentCreateRequest request)
@@ -60,6 +65,16 @@ namespace Registry.Api.Services
 		public async Task AssignAppointment(AppointmentAssignRequest request)
 		{
 			var appointment = await repository.GetById(request.Id);
+
+			var assignRequest = new AssignRequest()
+			{
+				AssignId = request.Id
+			};
+
+			var assignResponse = await billingService.Assign(assignRequest);
+
+			if (!assignResponse.IsAllowed)
+				throw new Exception("Operation is not allowed");
 
 			if (appointment == null)
 				throw new Exception("Object Appointment is null");
