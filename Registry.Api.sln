@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.32112.339
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Registry.Api", "Registry.Api\Registry.Api.csproj", "{F4464BB0-1F92-46C7-909E-7B15B8D07EA1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Registry.Api", "Registry.Api\Registry.Api.csproj", "{F4464BB0-1F92-46C7-909E-7B15B8D07EA1}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Registry.Api.Integration", "Registry.Api.Integration\Registry.Api.Integration.csproj", "{4688D3DC-51E7-41D1-9FCA-EECAD0DC3545}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{F4464BB0-1F92-46C7-909E-7B15B8D07EA1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F4464BB0-1F92-46C7-909E-7B15B8D07EA1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F4464BB0-1F92-46C7-909E-7B15B8D07EA1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4688D3DC-51E7-41D1-9FCA-EECAD0DC3545}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4688D3DC-51E7-41D1-9FCA-EECAD0DC3545}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4688D3DC-51E7-41D1-9FCA-EECAD0DC3545}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4688D3DC-51E7-41D1-9FCA-EECAD0DC3545}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
